@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "baseUrl": "http://localhost:3000",
+    "module": "commonjs",
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "ES6",
+    "incremental": true,
+    "skipLibCheck": false
+  },
+  "include": ["./**/*"]
+}

@@ -1,0 +1,4 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@700&display=swap);
+@-webkit-keyframes zoom-in-out{0%{-ms-transform:scale(1);transform:scale(1)}50%{-ms-transform:scale(1.2);transform:scale(1.2)}100%{-ms-transform:scale(1);transform:scale(1)}}@keyframes zoom-in-out{0%{-ms-transform:scale(1);transform:scale(1)}50%{-ms-transform:scale(1.2);transform:scale(1.2)}100%{-ms-transform:scale(1);transform:scale(1)}}.refemi{font-family:"Old Standard TT",serif}*{margin:0;padding:0;font-family:"Roboto",sans-serif;scroll-behavior:smooth;background:none !important;overflow:hidden}* ::-webkit-scrollbar{display:none}
