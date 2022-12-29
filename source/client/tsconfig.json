@@ -1,18 +1,22 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "module": "commonjs",
     "removeComments": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "target": "ES6",
-    "incremental": true,
+    "module": "Node16",
     "skipLibCheck": false,
-    "types": ["@types/node", "@citizenfx/client"],
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "lib": ["es2017"],
+    "types": ["@citizenfx/client", "@types/node"],
     "paths": {
-      "@core": ["./app/core"]
-    }
+      "@core/*": ["./core/*"],
+      "@lib": ["./lib"]
+    },
+    "moduleResolution": "node"
   },
   "include": ["./**/*"]
 }

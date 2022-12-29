@@ -1,20 +1,20 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const buildPath = path.resolve(__dirname, "../../dist/client/web");
+const buildPath = path.resolve(__dirname, '../../dist/client/web');
 
 module.exports = {
-  entry: "./web/index.tsx",
-  target: "web",
-  mode: "development",
+  entry: './web/index.tsx',
+  target: 'web',
+  mode: 'development',
   output: {
     path: buildPath,
-    filename: "script.js",
+    filename: 'script.js',
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
+    extensions: ['.js', '.jsx', '.json', '.ts', '.tsx'],
   },
   module: {
     rules: [
@@ -22,34 +22,30 @@ module.exports = {
         test: /\.(js|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: [
-              "@babel/preset-env",
-              "@babel/preset-react",
-              "@babel/preset-typescript",
-            ],
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
           },
         },
       },
       {
         test: /\.(ts|tsx)$/,
-        loader: "ts-loader",
+        loader: 'ts-loader',
       },
       {
-        enforce: "pre",
+        enforce: 'pre',
         test: /\.js$/,
-        loader: "source-map-loader",
+        loader: 'source-map-loader',
       },
       {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: "css-loader",
+            loader: 'css-loader',
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sourceMap: true,
               // options...
@@ -59,18 +55,18 @@ module.exports = {
       },
       {
         test: /\.node$/,
-        loader: "node-loader",
+        loader: 'node-loader',
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./web/public/index.html",
-      filename: "index.html",
+      template: './web/public/index.html',
+      filename: 'index.html',
     }),
 
     new MiniCssExtractPlugin({
-      filename: "style.css",
+      filename: 'style.css',
     }),
   ],
   devServer: {
