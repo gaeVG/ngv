@@ -1,0 +1,14 @@
+{
+    "translation": {
+        "app": {
+            "onStart": "L'application démarre",
+            "onResourceStart": "La ressource démarre"
+        },
+
+        "core": {
+            "modules": {
+                "notFound": "Le module {moduleName} n'a pas été trouvé"
+            }
+        }
+    }
+}

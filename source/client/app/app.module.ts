@@ -1,18 +1,13 @@
-import { Core } from './core';
-import { ModulesManager, ThreadManager } from '@core';
 import { AppController } from './app.controller';
-import { SDKAdaptater } from '../interfaces/sdk.interface';
-
+import { LogService } from '@core/log.service';
 
 export class AppModule extends AppController {
-  modules = [];
 
-  constructor(sdk: SDKAdaptater) {
-    Core.sdk = sdk;
-
-    Core.threads = new ThreadManager();
-    Core.modules = new ModulesManager();
-
+  constructor() {
     super();
+  }
+
+  protected onStart() {
+    LogService.info({ message: 'app.onStart', isOrphan: true });
   }
 }
