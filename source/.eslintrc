@@ -11,7 +11,7 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "ignorePatterns": ["webpack.config.js", "fliegdoc.config.js"],
+  "ignorePatterns": ["webpack.*.js", "fliegdoc.config.js"],
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "no-async-promise-executor": "off"

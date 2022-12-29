@@ -13,7 +13,7 @@ export class ThreadRegister {
   }
 
   public addThread(thread: Thread): void {
-    console.log(thread)
+    console.log(thread);
   }
 
   public get Threads(): Thread[] {
@@ -31,4 +31,4 @@ export class ThreadRegister {
   }
 }
 
-export { Thread, ThreadFactory }
+export { Thread, ThreadFactory };

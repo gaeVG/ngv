@@ -18,7 +18,7 @@ export abstract class Module {
 
   abstract clone(): Module;
   abstract onLoad(): void;
-  
+
   abstract start(): void;
   public stop(): void {
     this._stopEvent.emit('stop');
@@ -43,10 +43,10 @@ export class ModuleFactory {
     let prototype = ModuleFactory._modules[moduleName];
     if (!prototype) {
       try {
-        const module = await import(`./modules/${moduleName}`) as Module;
+        const module = (await import(`./modules/${moduleName}`)) as Module;
 
         if (!module) {
-          throw new ModuleNotFoundError(moduleName)
+          throw new ModuleNotFoundError(moduleName);
         }
         prototype = new module.onLoad();
         ModuleFactory._modules[moduleName] = prototype;

@@ -30,4 +30,4 @@ export class ModuleRegister {
   }
 }
 
-export { Module, ModuleFactory }
+export { Module, ModuleFactory };

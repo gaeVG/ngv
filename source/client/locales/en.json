@@ -1,8 +1,8 @@
 {
-    "translation": {
-        "app": {
-            "onStart": "The application will start",
-            "onResourceStart": "The resource starts"
-        }
+  "translation": {
+    "app": {
+      "onStart": "The application will start",
+      "onResourceStart": "The resource starts"
     }
+  }
 }

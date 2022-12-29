@@ -2,7 +2,6 @@ import { AppController } from './app.controller';
 import { LogService } from '@core/log.service';
 
 export class AppModule extends AppController {
-
   constructor() {
     super();
   }
