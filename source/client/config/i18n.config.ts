@@ -4,9 +4,10 @@ import { default as i18n } from 'i18next';
 import en from '../locales/en.json';
 import fr from '../locales/fr.json';
 
+
 // Init i18n module
 i18n.init({
-  lng: 'fr',
+  lng: process.env.LOCALE,
   debug: process.env.EXECUTION_MODE === 'safemode',
   resources: {
     en: { ...en },
@@ -14,4 +15,5 @@ i18n.init({
   },
 });
 
+// Export i18n locale function
 export default i18n;
