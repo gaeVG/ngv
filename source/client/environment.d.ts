@@ -5,6 +5,7 @@ declare global {
     interface ProcessEnv {
       readonly EXECUTION_MODE: 'development' | 'production' | 'test' | 'safemode';
       readonly DEBUG_MODULES: string;
+      readonly LOCALE: 'en' | 'fr';
     }
   }
 }
