@@ -1,13 +1,29 @@
-import { SDKAdaptater } from '../interfaces/sdk.interface';
-import { AppModule } from './app.module';
-import { Core } from './core';
+import { ModuleRegister } from '@core/modules';
 
-export class App extends AppModule {
-  constructor(sdk: SDKAdaptater) {
-    super(sdk);
+const moduleRegister = ModuleRegister.getInstance();
+
+type ApplicationConfig = {
+  modules?: string[];
+};
+
+export class ApplicationFactory {
+  private static _instance: ApplicationFactory;
+
+  private constructor(private config: ApplicationConfig = {}) {}
+
+  public static create(config: ApplicationConfig): ApplicationFactory {
+    if (!ApplicationFactory._instance) {
+      ApplicationFactory._instance = new ApplicationFactory(config);
+    }
+    return ApplicationFactory._instance;
   }
 
-  start() {
-    Core.modules.onStart.bind(this);
+  public start() {
+    if (this.config.modules !== undefined && this.config.modules.length > 0)
+      this.loadModules(this.config.modules);
+  }
+
+  private loadModules(modules: string[]) {
+    modules.forEach((module) => moduleRegister.loadModule(module));
   }
 }
