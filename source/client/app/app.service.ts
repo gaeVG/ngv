@@ -10,7 +10,7 @@ const log: LogData = {
 };
 
 export class AppService {
-  onClientResourceStart(resourceName: string) {
+  onClientResourceStart({ resourceName }: { resourceName: string }) {
     if (resourceName === GetCurrentResourceName()) {
       LogService.confirm({
         ...log,

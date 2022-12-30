@@ -1,9 +1,15 @@
 import { AppService } from './app.service';
-import { Core } from './core';
+import { EventDispatcher, On } from '@core/events';
 
-export class AppController extends Core {
+const eventDispatcher = EventDispatcher.getInstance();
+
+export class AppController {
   constructor(protected appService = new AppService()) {
-    super();
-    Core.sdk.on('onClientResourceStart', this.appService.onClientResourceStart);
+    eventDispatcher.addEventListener(
+      new On<{ resourceName: string }>({
+        name: 'onClientResourceStart',
+        handle: this.appService.onClientResourceStart,
+      }),
+    );
   }
 }
