@@ -22,7 +22,7 @@ export type LogData = {
   color?: ColorConsole;
 };
 
-const translateService = TranslationService.getInstance();
+const i18n = TranslationService.getInstance();
 
 function formatMessage(data: LogData) {
   const { message, location, isChild, isLast, isOrphan, color } = data;
@@ -34,7 +34,7 @@ function formatMessage(data: LogData) {
   return `
     ${prefix}
     ${color}
-    ${translateService.translate(
+    ${i18n.t(
       typeof message === 'object' ? message.name : message,
       typeof message === 'object' ? message.args : undefined,
     )}

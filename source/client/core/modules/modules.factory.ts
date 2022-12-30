@@ -1,11 +1,11 @@
+import { TranslationService } from '@core/translation.service';
 import { EventEmitter } from 'events';
-import { TranslationService } from '../translation.service';
 
-const translationService = TranslationService.getInstance();
+const i18n = TranslationService.getInstance();
 
 class ModuleNotFoundError extends Error {
   constructor(moduleName: string) {
-    super(translationService.translate('core.modules.notFoundSta', { moduleName }));
+    super(i18n.t('core.modules.notFound', { moduleName }));
   }
 }
 
@@ -43,7 +43,7 @@ export class ModuleFactory {
     let prototype = ModuleFactory._modules[moduleName];
     if (!prototype) {
       try {
-        const module = (await import(`./modules/${moduleName}`)) as Module;
+        const module = (await import(`../../app/modules/${moduleName}`)) as Module;
 
         if (!module) {
           throw new ModuleNotFoundError(moduleName);
@@ -51,7 +51,7 @@ export class ModuleFactory {
         prototype = new module.onLoad();
         ModuleFactory._modules[moduleName] = prototype;
       } catch (error) {
-        translationService.translate('error.moduleNotFound', { moduleName });
+        i18n.t('error.moduleNotFound', { moduleName });
       }
     }
 
