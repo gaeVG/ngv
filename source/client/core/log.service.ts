@@ -14,7 +14,7 @@ enum ColorConsole {
 }
 
 export type LogData = {
-  message: string;
+  message: string | { name: string; args: Record<string, unknown> };
   location?: string;
   isChild?: boolean;
   isLast?: boolean;
@@ -30,7 +30,16 @@ function formatMessage(data: LogData) {
   const prefix =
     isChild || isLast ? '|\t' : `+-- ${locationPrefix ? `[ ${locationPrefix}` : ''}\n|  `;
   const sufix = isLast || isOrphan ? `\n+-- ${locationPrefix ? `${locationPrefix} ]` : ''}\n` : '';
-  return `${prefix}${color}${translateService.translate(message)}${sufix}`;
+
+  return `
+    ${prefix}
+    ${color}
+    ${translateService.translate(
+      typeof message === 'object' ? message.name : message,
+      typeof message === 'object' ? message.args : undefined,
+    )}
+    ${sufix}
+  `;
 }
 
 export class LogService {
