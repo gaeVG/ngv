@@ -8,6 +8,9 @@
     "core": {
       "modules": {
         "notFound": "Le module {moduleName} n'a pas été trouvé"
+      },
+      "events": {
+        "handling.error": "Une erreur est survenue lors du traitement de l'événement (type: ${eventType}) {eventName} : {errorMessage}"
       }
     }
   }

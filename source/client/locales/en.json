@@ -3,6 +3,15 @@
     "app": {
       "onStart": "The application will start",
       "onResourceStart": "The resource starts"
+    },
+
+    "core": {
+      "modules": {
+        "notFound": "The module {moduleName} was not found"
+      },
+      "events": {
+        "handling.error": "An error occurred while processing the event (type: ${eventType}) {eventName} : {errorMessage}"
+      }
     }
   }
 }
