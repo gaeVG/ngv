@@ -1,4 +1,5 @@
 import { Event, On, OnNet } from './event.factory';
+import { LogService } from '@core/log.service';
 
 export class EventDispatcher {
   private static $self: EventDispatcher;
@@ -31,8 +32,19 @@ export class EventDispatcher {
       this.eventHandlers.set(eventType, handlers);
     }
 
-    event.on();
+    const onEvent = event.on();
     handlers.add(event);
+
+    onEvent.then((error) => {
+      if (error) {
+        LogService.error({
+          message: 'core.events.handling.error',
+          location: 'EventDispatcher.addEventListener()',
+        });
+
+        this.removeEventListener(event);
+      }
+    });
   }
 
   removeEventListener(event: Event<unknown>) {
