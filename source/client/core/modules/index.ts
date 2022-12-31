@@ -1,32 +1,48 @@
 import { Module, ModuleFactory } from './modules.factory';
 
+class ModuleNotFoundError extends Error {
+  constructor(moduleName: string) {
+    super(`Module ${moduleName} not found`);
+  }
+}
+
 export class ModuleRegister {
-  private static _self: ModuleRegister;
-  private constructor(private _modules: Module[] = []) {}
+  private static _instance: ModuleRegister;
+
+  private constructor(private modules = new Map<string, ModuleFactory>()) {}
 
   public static getInstance(): ModuleRegister {
-    if (!ModuleRegister._self) {
-      ModuleRegister._self = new ModuleRegister();
+    if (!ModuleRegister._instance) {
+      ModuleRegister._instance = new ModuleRegister();
     }
-    return ModuleRegister._self;
+    return ModuleRegister._instance;
   }
 
-  public async loadModule(type: string): Promise<Module> {
-    const module = await ModuleFactory.loadModule(type);
-    this._modules.push(module);
-    return module;
+  async loadModule(moduleName: string): Promise<Module | Error> {
+    const factory = this.modules.get(moduleName);
+    if (factory) {
+      throw new Error(`Module ${moduleName} found yet in registry`);
+    }
+
+    try {
+      const importedModule = await import(`../../app/modules/${moduleName}`);
+
+      const moduleFactory = new importedModule.default();
+      this.modules.set(moduleName, moduleFactory);
+
+      return moduleFactory.createModule();
+    } catch (error) {
+      switch (error.code) {
+        case 'MODULE_NOT_FOUND':
+          return new ModuleNotFoundError(moduleName);
+        default:
+          return error;
+      }
+    }
   }
 
-  public start(): void {
-    this._modules.forEach((module) => {
-      module.start();
-    });
-  }
-
-  public stop(): void {
-    this._modules.forEach((module) => {
-      module.stop();
-    });
+  get Modules(): Map<string, ModuleFactory> {
+    return this.modules;
   }
 }
 

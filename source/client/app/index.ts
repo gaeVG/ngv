@@ -1,3 +1,4 @@
+import { LogService } from '@core/log.service';
 import { ModuleRegister } from '@core/modules';
 
 const moduleRegister = ModuleRegister.getInstance();
@@ -23,7 +24,15 @@ export class ApplicationFactory {
       this.loadModules(this.config.modules);
   }
 
-  private loadModules(modules: string[]) {
-    modules.forEach((module) => moduleRegister.loadModule(module));
+  private async loadModules(modules: string[]) {
+    modules.forEach(async (module) => {
+      const loadedModule = await moduleRegister.loadModule(module);
+
+      if (loadedModule instanceof Error) {
+        LogService.error({ message: loadedModule.message });
+      } else {
+        loadedModule.init();
+      }
+    });
   }
 }
