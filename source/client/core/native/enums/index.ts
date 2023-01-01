@@ -11,6 +11,7 @@ export { CloudHat } from './CloudHat';
 export { Control } from './Control';
 export { CursorSprite } from './CursorSprite';
 export { DrivingStyle, VehicleDrivingFlags } from './Driving';
+export { OnClientEvent } from './Events';
 export { ExplosionType } from './ExplosionType';
 export { FiringPattern } from './FiringPattern';
 export { Font } from './Font';
