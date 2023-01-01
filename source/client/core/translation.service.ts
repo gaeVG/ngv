@@ -27,4 +27,8 @@ export class TranslationService {
   public t(key: string, options?: Record<string, unknown>): string {
     return this.i18n.t(key, options);
   }
+
+  public addResourceBundle(locale: string, namespace: string, resources: Record<string, unknown>) {
+    this.i18n.addResourceBundle(locale, namespace, resources, true);
+  }
 }

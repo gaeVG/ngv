@@ -1,18 +1,23 @@
 {
-  "translation": {
-    "app": {
-      "onStart": "L'application démarre",
-      "onResourceStart": "La ressource démarre"
-    },
-
-    "core": {
-      "modules": {
-        "notFound": "Le module {moduleName} n'a pas été trouvé",
-        "load.error": "Une erreur est survenue lors du chargement du module {moduleName} : {errorMessage}"
-      },
-      "events": {
-        "handling.error": "Une erreur est survenue lors du traitement de l'événement (type: ${eventType}) {eventName} : {errorMessage}"
-      }
+  "resource": {
+    "onStart": "Lancement de la resource Engine V"
+  },
+  "app": {
+    "onStart": "L'application démarre",
+    "modules": {
+      "loading": "Chargement des modules de l'application",
+      "loadModule": "Chargement du module {{moduleName}}",
+      "complete": "Chargement des modules terminé"
     }
-  }
+  },
+  "core": {
+    "modules": {
+      "notFound": "Le module {{moduleName}} n'a pas été trouvé",
+      "load.error": "Une erreur est survenue lors du chargement du module {{moduleName}} : {errorMessage}"
+    },
+    "events": {
+      "handling.error": "Une erreur est survenue lors du traitement de l'événement (type: {{event.type}}) {{event.name} : {errorMessage}"
+    }
+  },
+  "modules": {}
 }

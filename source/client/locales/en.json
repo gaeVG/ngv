@@ -1,16 +1,26 @@
 {
-  "translation": {
-    "app": {
-      "onStart": "The application will start",
-      "onResourceStart": "The resource starts"
-    },
+  "app": {
+    "onStart": "The application will start",
+    "onResourceStart": "The resource starts",
+    "loadModules": "Loading the application modules",
+    "loadModules.end": "Module loading completed",
+    "initModules": "Initializing {moduleName} module"
+  },
 
-    "core": {
-      "modules": {
-        "notFound": "The module {moduleName} was not found"
-      },
-      "events": {
-        "handling.error": "An error occurred while processing the event (type: ${eventType}) {eventName} : {errorMessage}"
+  "core": {
+    "modules": {
+      "notFound": "The module {moduleName} was not found",
+      "load.error": "An error occurred while loading the module {moduleName} : {errorMessage}"
+    },
+    "events": {
+      "handling.error": "An error occurred while processing the event (type: ${eventType}) {eventName} : {errorMessage}"
+    }
+  },
+
+  "modules": {
+    "user:": {
+      "module": {
+        "init": "Initializing the user module"
       }
     }
   }
