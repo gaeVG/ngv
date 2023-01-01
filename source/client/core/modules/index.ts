@@ -17,11 +17,14 @@ export class ModuleRegister {
 
   private setLocaleModule(moduleName: string) {
     const module = this.modules.get(moduleName);
-    Object.keys(module.locales).forEach((locale) =>
-      i18n.addResourceBundle(locale, `${moduleName}`, {
-        module: module.locales[locale],
-      }),
-    );
+
+    if (module.locales) {
+      Object.keys(module.locales).forEach((locale) =>
+        i18n.addResourceBundle(locale, `modules`, {
+          [moduleName]: module.locales[locale],
+        }),
+      );
+    }
   }
 
   public static getInstance(): ModuleRegister {
@@ -44,7 +47,7 @@ export class ModuleRegister {
       const module = moduleFactory.createModule();
 
       this.modules.set(moduleName, module);
-      // this.setLocaleModule(moduleName);
+      this.setLocaleModule(moduleName);
 
       return module;
     } catch (error) {

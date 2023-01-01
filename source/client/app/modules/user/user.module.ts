@@ -2,9 +2,7 @@ import { Module } from '@core/modules/modules.factory';
 import { LogData, LogService } from '@core/log.service';
 import { UserController } from './user.controller';
 import localeFR from './locales/fr.json';
-import { TranslationService } from '@core/translation.service';
-
-const i18n = TranslationService.getInstance();
+import localEN from './locales/en.json';
 
 const log: LogData = {
   location: 'UserModule',
@@ -12,11 +10,13 @@ const log: LogData = {
 };
 
 export class UserModule extends UserController implements Module {
-  locales = { fr: { testVar: 'coucou' } };
+  locales = {
+    fr: localeFR,
+    en: localEN,
+  };
 
   constructor() {
     super();
-    i18n.addResourceBundle('fr', 'modules', { user: localeFR });
   }
 
   init() {

@@ -36,7 +36,7 @@ export class ApplicationFactory extends AppModule {
 
   private async loadModules(modules: string[]) {
     log.location = `${log.location}.loadModules`;
-    LogService.debug({ ...log, message: 'app:modules:loading' });
+    LogService.debug({ ...log, message: 'app:modules.loading' });
     modules.forEach(async (module, i) => {
       const loadedModule = await moduleRegister.loadModule(module);
 

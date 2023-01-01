@@ -1,12 +1,15 @@
 {
+  "resource": {
+    "onStart": "Launch of the Resource Engine V"
+  },
   "app": {
     "onStart": "The application will start",
-    "onResourceStart": "The resource starts",
-    "loadModules": "Loading the application modules",
-    "loadModules.end": "Module loading completed",
-    "initModules": "Initializing {moduleName} module"
+    "modules": {
+      "loading": "Instantiation of the modules of the application...",
+      "loadModule": "Module preparation {{moduleName}}",
+      "complete": "Loading of modules completed"
+    }
   },
-
   "core": {
     "modules": {
       "notFound": "The module {moduleName} was not found",
@@ -16,12 +19,5 @@
       "handling.error": "An error occurred while processing the event (type: ${eventType}) {eventName} : {errorMessage}"
     }
   },
-
-  "modules": {
-    "user:": {
-      "module": {
-        "init": "Initializing the user module"
-      }
-    }
-  }
+  "modules": {}
 }

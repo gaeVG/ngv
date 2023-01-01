@@ -5,8 +5,8 @@
   "app": {
     "onStart": "L'application démarre",
     "modules": {
-      "loading": "Chargement des modules de l'application",
-      "loadModule": "Chargement du module {{moduleName}}",
+      "loading": "Assemblage des modules de l'application",
+      "loadModule": "Préparation du module {{moduleName}}",
       "complete": "Chargement des modules terminé"
     }
   },
