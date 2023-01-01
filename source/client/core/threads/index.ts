@@ -1,18 +1,18 @@
 import { Thread, ThreadFactory } from './thread.factory';
 
 export class ThreadRegister {
-  private static _self: ThreadRegister;
+  private static _instance: ThreadRegister;
 
   private constructor(private _threads: Thread[] = []) {}
 
   public static getInstance(): ThreadRegister {
-    if (!ThreadRegister._self) {
-      ThreadRegister._self = new ThreadRegister();
+    if (!ThreadRegister._instance) {
+      ThreadRegister._instance = new ThreadRegister();
     }
-    return ThreadRegister._self;
+    return ThreadRegister._instance;
   }
 
-  public addThread(thread: Thread): void {
+  public createThread(thread: Thread): void {
     console.log(thread);
   }
 
