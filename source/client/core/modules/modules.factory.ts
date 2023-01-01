@@ -1,4 +1,5 @@
 export interface Module {
+  locales?: Record<string, Record<string, unknown>>;
   init(): void;
 }
 
