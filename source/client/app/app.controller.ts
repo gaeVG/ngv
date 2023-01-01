@@ -6,7 +6,7 @@ const eventDispatcher = EventDispatcher.getInstance();
 export class AppController {
   constructor(protected appService = new AppService()) {
     eventDispatcher.addEventListener(
-      new On<{ resourceName: string }>({
+      new On<string>({
         name: 'onClientResourceStart',
         handle: this.appService.onClientResourceStart,
       }),

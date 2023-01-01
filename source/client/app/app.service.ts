@@ -10,11 +10,11 @@ const log: LogData = {
 };
 
 export class AppService {
-  onClientResourceStart({ resourceName }: { resourceName: string }) {
+  onClientResourceStart(resourceName: string) {
     if (resourceName === GetCurrentResourceName()) {
       LogService.confirm({
         ...log,
-        message: 'app.onResourceStart',
+        message: 'resource:onStart',
         isOrphan: true,
       });
     }

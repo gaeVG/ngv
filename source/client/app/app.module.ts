@@ -7,6 +7,6 @@ export class AppModule extends AppController {
   }
 
   protected onStart() {
-    LogService.info({ message: 'app.onStart', isOrphan: true });
+    LogService.info({ message: 'app:onStart', isOrphan: true });
   }
 }
