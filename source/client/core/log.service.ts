@@ -31,15 +31,10 @@ function formatMessage(data: LogData) {
     isChild || isLast ? '|\t' : `+-- ${locationPrefix ? `[ ${locationPrefix}` : ''}\n|  `;
   const sufix = isLast || isOrphan ? `\n+-- ${locationPrefix ? `${locationPrefix} ]` : ''}\n` : '';
 
-  return `
-    ${prefix}
-    ${color}
-    ${i18n.t(
-      typeof message === 'object' ? message.name : message,
-      typeof message === 'object' ? message.args : undefined,
-    )}
-    ${sufix}
-  `;
+  return `${prefix}${color}${i18n.t(
+    typeof message === 'object' ? message.name : message,
+    typeof message === 'object' ? message.args : undefined,
+  )}${sufix}`;
 }
 
 export class LogService {
@@ -63,9 +58,9 @@ export class LogService {
 
   static error(logData: LogData) {
     console.log(
-      `${ColorConsole.RED}${formatMessage({
+      `${formatMessage({
         ...logData,
-        color: logData.color || ColorConsole.RED,
+        color: ColorConsole.RED,
       })}`,
     );
   }
